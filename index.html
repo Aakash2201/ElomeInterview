@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Elcome Interview</title>
+  </head>
+  <body>
+
+     <h1>Student Information Dataset</h1>
+
+    <form id="studentForm">
+        <label for="studentName">Student Name:</label>
+        <input type="text" id="studentName" required><br>
+
+        <label for="studentMarks">History:</label>
+        <input type="number" id="studentMarks" required><br>
+
+        <label for="studentMarks1">maths:</label>
+        <input type="number" id="studentMarks1" required><br>
+
+        <input type="submit" value="Submit">
+    </form>
+
+    <h2>Student List</h2>
+    <ul id="studentList">
+      <!-- students list of marks and name -->
+    </ul>
+    <script>
+    const form = document.getElementById("studentForm");
+    const studentList = document.getElementById("studentList");
+
+    form.addEventListener("submit", function (e) {
+        e.preventDefault();
+
+        const studentName = document.getElementById("studentName").value;
+        const studentMarks = document.getElementById("studentMarks").value;
+        const studentMarks1 = document.getElementById("studentMarks1").value;
+
+        if (studentName && studentMarks && studentMarks1) {
+            const listItem = document.createElement("li");
+            listItem.textContent = `${studentName}: ${studentMarks}: ${studentMarks1}`;
+            studentList.appendChild(listItem);
+
+            // Clear the input fields after submission
+            document.getElementById("studentName").value = "";
+            document.getElementById("studentMarks").value = "";
+            document.getElementById("studentMarks1").value = "";
+        }
+    });
+  </script>
+  </body>
+
+</html>
